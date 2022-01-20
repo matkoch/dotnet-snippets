@@ -27,6 +27,7 @@ class All
     }
 
     public int Property { get; }
+    public string Property2 => Environment.CurrentDirectory;
 
     private int Method(int parameter)
     {
@@ -46,7 +47,7 @@ class All
             {
                 sum += number << 2;
 #if !RELEASE
-                Console.Write($"Trace: {sum} ...");
+                Console.Write($"Trace: {sum} \r\n\r\n ...");
 #endif
                 Local();
             }
