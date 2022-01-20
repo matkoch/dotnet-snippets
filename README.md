@@ -7,6 +7,8 @@ the [Roslyn classifier](https://www.strathweb.com/2020/06/c-semantic-classificat
 
 It can also transform theme files to CSS style definitions.
 
+![](example.png)
+
 ## 🎨 Supported Themes
 
 - JetBrains Rider
@@ -18,4 +20,4 @@ It can also transform theme files to CSS style definitions.
 
 ## 👏 Credits
 
-Thanks to the helpful folks in the [C# Discord](https://discord.gg/csharp) Roslyn channel. Syntax visitors or walkers would have been way more complicated! 😅
+Thanks to the helpful folks in the [C# Discord](https://discord.gg/csharp) Roslyn channel for pointing me to the [`Classifier`](https://github.com/dotnet/roslyn/blob/c9c4fd26615bb1f0ab1f9c5a679ba349005dc291/src/Workspaces/Core/Portable/Classification/Classifier.cs) class. Syntax visitors or walkers would have been way more complicated! 😅
