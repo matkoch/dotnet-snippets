@@ -63,7 +63,7 @@ public class RiderThemeLoader : IThemeLoaderBase
 
     public string Load(string file)
     {
-        var theme = XDocument.Load("RiderLight.xml").XPathSelectElements("//scheme/attributes/option").ToList();
+        var theme = XDocument.Load(file).XPathSelectElements("//scheme/attributes/option").ToList();
 
         Style GetStyle(string styleName)
         {

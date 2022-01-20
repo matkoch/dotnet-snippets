@@ -4,7 +4,7 @@ using System.Linq;
 using DotNetSnippets;
 using TextCopy;
 
-var theme = new RiderThemeLoader().Load("RiderLight.xml");
+var theme = new RiderThemeLoader().Load("RiderDark.xml");
 ClipboardService.SetText(theme);
 
 var projectFile = Directory.GetFiles(Environment.CurrentDirectory, "*.csproj").Single();
