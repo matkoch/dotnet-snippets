@@ -4,14 +4,13 @@ using System.Linq;
 using DotNetSnippets;
 using TextCopy;
 
-var theme = new RiderThemeLoader().Load("RiderDark.xml");
+var theme = new RiderThemeLoader().LoadFromResource("RiderDark.xml");
 ClipboardService.SetText(theme);
 
 var projectFile = Directory.GetFiles(Environment.CurrentDirectory, "*.csproj").Single();
-var csharpFile = Environment.GetCommandLineArgs().ElementAt(1);
-var html = await new HtmlClassifier().Load(projectFile, csharpFile);
+var sourceFile = Environment.GetCommandLineArgs().ElementAt(1);
+var html = await new HtmlClassifier().Load(projectFile, sourceFile);
 ClipboardService.SetText(html);
-// Console.WriteLine(html);
 
 var html2 = await new HtmlClassifier().Load(@"
 using System;

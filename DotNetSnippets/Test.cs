@@ -19,7 +19,7 @@ class All
     {
         myField = field; // comment
         Property = property;
-        var regex1 = new Regex(@"\b[M]\w+");
+        var regex1 = new Regex("\\b[M]\\w+");
         var regex2 = new Regex(@"(\w+)\s+(car)");
 
         if (false)

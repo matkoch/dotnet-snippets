@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -61,9 +63,23 @@ public class RiderThemeLoader : IThemeLoaderBase
         [ClassificationTypeNames.XmlDocCommentAttributeValue] = new[] { "DEFAULT_DOC_COMMENT_TAG_VALUE", "DEFAULT_DOC_COMMENT" },
     };
 
-    public string Load(string file)
+    public string LoadFromResource(string resourceName)
     {
-        var theme = XDocument.Load(file).XPathSelectElements("//scheme/attributes/option").ToList();
+        var assembly = typeof(Program).Assembly;
+        var resourceStream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{resourceName}");
+        Trace.Assert(resourceStream != null);
+        var reader = new StreamReader(resourceStream);
+        return Load(reader.ReadToEnd());
+    }
+
+    public string LoadFromFile(string file)
+    {
+        return Load(File.ReadAllText(file));
+    }
+
+    private string Load(string content)
+    {
+        var theme = XDocument.Parse(content).XPathSelectElements("//scheme/attributes/option").ToList();
 
         Style GetStyle(string styleName)
         {

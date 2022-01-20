@@ -19,12 +19,12 @@ public class HtmlClassifier
         "punctuation"
     };
 
-    public async Task<string> Load(string csharpCode, int[] highlightedLines = null)
+    public async Task<string> Load(string sourceCode, int[] highlightedLines = null)
     {
         var host = MefHostServices.Create(MefHostServices.DefaultAssemblies);
         var workspace = new AdhocWorkspace(host);
 
-        var sourceText = SourceText.From(csharpCode);
+        var sourceText = SourceText.From(sourceCode);
         var syntaxTree = CSharpSyntaxTree.ParseText(sourceText);
         var compilation = CSharpCompilation
             .Create(nameof(HtmlClassifier))
@@ -74,11 +74,11 @@ public class HtmlClassifier
         // return await Load(document, highlightedLines);
     }
 
-    public async Task<string> Load(string projectFile, string csharpFile, int[] highlightedLines = null)
+    public async Task<string> Load(string projectFile, string sourceFile, int[] highlightedLines = null)
     {
         using var workspace = MSBuildWorkspace.Create();
         var project = await workspace.OpenProjectAsync(projectFile);
-        var document = project.Documents.Single(x => x.Name == csharpFile);
+        var document = project.Documents.Single(x => x.Name == sourceFile);
 
         var syntaxRoot = await document.GetSyntaxRootAsync();
         Trace.Assert(syntaxRoot != null);
