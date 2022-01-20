@@ -15,3 +15,7 @@ It can also transform theme files to CSS style definitions.
 
 - https://github.com/Swiftly1/CsharpToColouredHTML
 - https://github.com/fsprojects/FSharp.Formatting
+
+## 👏 Credits
+
+Thanks to the helpful folks in the [C# Discord](https://discord.gg/csharp) Roslyn channel. Syntax visitors or walkers would have been way more complicated! 😅
